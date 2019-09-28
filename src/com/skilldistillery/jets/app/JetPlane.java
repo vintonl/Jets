@@ -2,8 +2,8 @@ package com.skilldistillery.jets.app;
 
 public class JetPlane extends Jet {
 
-	public JetPlane(String model, double speed, int range, long price) {
-		super(model, speed, range, price);
+	public JetPlane(String model, String type, double speed, int range, long price) {
+		super(model, type, speed, range, price);
 	}
 
 }

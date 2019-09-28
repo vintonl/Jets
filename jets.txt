@@ -1,7 +1,7 @@
-Cargo Jet, 300.0, 4000, 8000000
-Fighter Jet, 1500.0, 2622, 18800000
-Cargo Jet, 350.0, 5880, 2000000
-Fighter Jet, 1400.0, 1880, 14000000
-Commercial, 400.0, 5240, 2000000
-Cessna 172 Skyhawk, 188.0, 736, 364000
-SuperFast, 7000.0, 100, 125000000
+C1, Cargo Jet, 300.0, 4000, 8000000
+F16, Fighter Jet, 1500.0, 2622, 18800000
+777, Cargo Jet, 350.0, 5880, 2000000
+Saab JAS 39 Gripen, Fighter Jet, 1400.0, 1880, 14000000
+747, Commercial, 400.0, 5240, 2000000
+Cessna 172 Skyhawk, Private, 188.0, 736, 364000
+SuperFast, Private, 7000.0, 100, 125000000

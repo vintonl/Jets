@@ -21,16 +21,16 @@ public class AirField {
 			Jet j = null;
 			while ((plane = reader.readLine()) != null) {
 				String[] planeParts = plane.split(", ");
-				if (planeParts[0].contentEquals("Cargo Jet")) {
-					j = new CargoPlane(planeParts[0], Double.parseDouble(planeParts[1]),
-							Integer.parseInt(planeParts[2]), Long.parseLong(planeParts[3]));
+				if (planeParts[1].contentEquals("Cargo Jet")) {
+					j = new CargoPlane(planeParts[0], planeParts[1], Double.parseDouble(planeParts[2]),
+							Integer.parseInt(planeParts[3]), Long.parseLong(planeParts[4]));
 
-				} else if (planeParts[0].contentEquals("Fighter Jet")) {
-					j = new FighterJet(planeParts[0], Double.parseDouble(planeParts[1]),
-							Integer.parseInt(planeParts[2]), Long.parseLong(planeParts[3]));
+				} else if (planeParts[1].contentEquals("Fighter Jet")) {
+					j = new FighterJet(planeParts[0], planeParts[1], Double.parseDouble(planeParts[2]),
+							Integer.parseInt(planeParts[3]), Long.parseLong(planeParts[4]));
 				} else {
-					j = new JetPlane(planeParts[0], Double.parseDouble(planeParts[1]), Integer.parseInt(planeParts[2]),
-							Long.parseLong(planeParts[3]));
+					j = new JetPlane(planeParts[0], planeParts[1], Double.parseDouble(planeParts[2]),
+							Integer.parseInt(planeParts[3]), Long.parseLong(planeParts[4]));
 				}
 				jets.add(j);
 			}
@@ -107,6 +107,7 @@ public class AirField {
 	}
 
 	public void addJet(Scanner scanner) {
+		String type = typeMenu(scanner);
 		System.out.println("Enter model to add: ");
 		String model = scanner.nextLine();
 		System.out.println("Enter speed in MPH: ");
@@ -118,15 +119,44 @@ public class AirField {
 		scanner.nextLine();
 
 		Jet input = null;
-		if (model.contentEquals("Cargo Jet")) {
-			input = new CargoPlane(model, speed, range, price);
+		if (type.contentEquals("Cargo Jet")) {
+			input = new CargoPlane(model, type, speed, range, price);
 
-		} else if (model.contentEquals("Fighter Jet")) {
-			input = new FighterJet(model, speed, range, price);
+		} else if (type.contentEquals("Fighter Jet")) {
+			input = new FighterJet(model, type, speed, range, price);
 		} else {
-			input = new JetPlane(model, speed, range, price);
+			input = new JetPlane(model, type, speed, range, price);
 		}
 		jets.add(input);
+	}
+
+	private String typeMenu(Scanner scanner) {
+		System.out.println("Menu of Jet Types: ");
+		System.out.println("1. Cargo Jet: ");
+		System.out.println("2. Fighter Jet: ");
+		System.out.println("3. Any other type: ");
+		System.out.println("Please choose type: ");
+		int choice = scanner.nextInt();
+		scanner.nextLine();
+		String type = "";
+		
+		switch (choice) {
+		case 1:
+			type = "Cargo Jet";
+			break;
+		case 2:
+			type = "Fighter Jet";
+			break;
+		case 3:
+			System.out.println("Enter type: ");
+			type = scanner.nextLine();
+			scanner.nextLine();
+			break;
+		default:
+			System.err.println("Unexpected value: " + choice);
+		}
+		
+		return type;
 	}
 
 	public void removeJet(Scanner scanner) {
@@ -165,7 +195,7 @@ public class AirField {
 				e.printStackTrace();
 			}
 			for (Jet jet : jets) {
-				pw.println(jet.getModel() + ", " + jet.getSpeed() + ", " + jet.getRange() + ", " + jet.getPrice());
+				pw.println(jet.getModel() + ", " + jet.getType() + ", " + jet.getSpeed() + ", " + jet.getRange() + ", " + jet.getPrice());
 			}
 			pw.close();
 		} else {

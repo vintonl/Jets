@@ -3,13 +3,17 @@ package com.skilldistillery.jets.app;
 public abstract class Jet {
 
 	private String model;
+	private String type;
 	private double speed;
 	private int range;
 	private long price;
 
-	public Jet(String model, double speed, int range, long price) {
+	
+
+	public Jet(String model, String type, double speed, int range, long price) {
 		super();
 		this.model = model;
+		this.type = type;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
@@ -63,7 +67,7 @@ public abstract class Jet {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet Model: ").append(model).append(", Top Speed: ").append(speed).append("mph, range: ")
+		builder.append("Jet Model: ").append(model).append(" Type: ").append(type).append(", Top Speed: ").append(speed).append("mph, range: ")
 				.append(range).append(" miles, Price: $").append(price).append(" ");
 		return builder.toString();
 	}
@@ -102,6 +106,14 @@ public abstract class Jet {
 		if (Double.doubleToLongBits(speed) != Double.doubleToLongBits(other.speed))
 			return false;
 		return true;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }
