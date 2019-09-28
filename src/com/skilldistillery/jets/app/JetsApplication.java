@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,15 +19,15 @@ public class JetsApplication {
 
 		ja.airField = new AirField(fileName);
 
-		ja.launch();
+		ja.launch(fileName);
 	}
 
-	private void launch() {
+	private void launch(String fileName) {
 		System.out.println("Welcome to the Jet App.");
 		boolean start = true;
 		while (start) {
 			displayUserMenu();
-			start = userInput();
+			start = userInput(fileName);
 		}
 
 		System.out.println("Thanks, and hava a great one!");
@@ -44,10 +45,11 @@ public class JetsApplication {
 		System.out.println("6. Dogfight!");
 		System.out.println("7. Add a jet to Fleet");
 		System.out.println("8. Remove a jet from Fleet");
-		System.out.println("9. Quit");
+		System.out.println("9. Save Fleet");
+		System.out.println("10. Quit");
 	}
 
-	private boolean userInput() {
+	private boolean userInput(String fileName) {
 		int choice = 0;
 		System.out.println("Please enter your choice (1-9): ");
 		try {
@@ -84,6 +86,13 @@ public class JetsApplication {
 			airField.removeJet(scanner);
 			break;
 		case 9:
+			try {
+				airField.save(fileName);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			break;
+		case 10:
 			return false;
 		default:
 			System.err.println("Invalid input. Please try again.");

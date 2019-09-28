@@ -2,7 +2,9 @@ package com.skilldistillery.jets.app;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -149,6 +151,14 @@ public class AirField {
 		} else {
 			System.err.println("Invalid input.");
 		}
+	}
+
+	public void save(String fileName) throws FileNotFoundException {
+		PrintWriter pw = new PrintWriter(new FileOutputStream(fileName));
+		for (Jet jet : jets) {
+			pw.println(jet.getModel() + ", " + jet.getSpeed() + ", " + jet.getRange() + ", " + jet.getPrice());
+		}
+		pw.close();
 	}
 
 }

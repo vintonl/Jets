@@ -17,7 +17,8 @@ First, the user enters their menu selection. The user can choose to:
 6. Dogfight!
 7. Add a jet to Fleet
 8. Remove a jet from Fleet
-9. Quit
+9. Save Fleet
+10. Quit
 
 The Jets Application will calculate and process the selection of your choosing.  
 
@@ -37,4 +38,4 @@ Java Fundamentals of Programming: Iteration, for loops, advanced for loops, whil
 
 This project helped me better grasp the capabilities of Polymorphism in Object-Oriented Programming by allows me to use superclass references to subclass objects. I got to implement my new knowledge of using abstract classes and implementation classes to better use the multiple forms of objects.
 
-I learned about and implements an ArrayList. ArrayList has an advantage over an array in that ArrayList can grow dynamically. This gave my application the ability to add subtract Objects as jets are added or subtracted. 
+I learned about and implements an ArrayList. ArrayList has an advantage over an array in that ArrayList can grow dynamically. This gave my application the ability to add subtract Objects as jets are added or subtracted.
