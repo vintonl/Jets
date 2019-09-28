@@ -153,17 +153,25 @@ public class AirField {
 		}
 	}
 
-	public void save(String fileName) {
-		PrintWriter pw = null;
-		try {
-			pw = new PrintWriter(new FileOutputStream(fileName));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	public void save(Scanner scanner, String fileName) {
+		System.out.println("Enter new file name to save (include .txt):");
+		String saveFile = scanner.nextLine();
+		
+		if (!saveFile.equalsIgnoreCase(fileName)) {
+			PrintWriter pw = null;
+			try {
+				pw = new PrintWriter(new FileOutputStream(saveFile));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			for (Jet jet : jets) {
+				pw.println(jet.getModel() + ", " + jet.getSpeed() + ", " + jet.getRange() + ", " + jet.getPrice());
+			}
+			pw.close();
+		} else {
+			System.err.println("Error: file name matched orginial file name, and was not saved.");
 		}
-		for (Jet jet : jets) {
-			pw.println(jet.getModel() + ", " + jet.getSpeed() + ", " + jet.getRange() + ", " + jet.getPrice());
-		}
-		pw.close();
+
 	}
 
 }

@@ -50,7 +50,7 @@ public class JetsApplication {
 
 	private boolean userInput(String fileName) {
 		int choice = 0;
-		System.out.println("Please enter your choice (1-9): ");
+		System.out.println("Please enter your choice (1-10): ");
 		try {
 			choice = scanner.nextInt();
 		} catch (InputMismatchException e) {
@@ -85,7 +85,7 @@ public class JetsApplication {
 			airField.removeJet(scanner);
 			break;
 		case 9:
-			airField.save(fileName);
+			airField.save(scanner, fileName);
 			break;
 		case 10:
 			return false;
