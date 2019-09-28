@@ -69,16 +69,16 @@ public class AirField {
 	}
 
 	public void viewLongestRange() {
-		double longestR = 0;
+		double longestRange = 0;
 
 		for (Jet jet : jets) {
-			if (longestR < jet.getRange()) {
-				longestR = jet.getRange();
+			if (longestRange < jet.getRange()) {
+				longestRange = jet.getRange();
 			}
 		}
 
 		for (Jet jet : jets) {
-			if (longestR == jet.getRange()) {
+			if (longestRange == jet.getRange()) {
 				System.out.println("Longest Range: " + jet.toString());
 			}
 		}
