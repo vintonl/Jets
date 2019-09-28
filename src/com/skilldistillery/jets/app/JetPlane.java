@@ -7,4 +7,3 @@ public class JetPlane extends Jet {
 	}
 
 }
-

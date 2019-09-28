@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class JetsApplication {
@@ -28,14 +29,14 @@ public class JetsApplication {
 			start = userInput();
 		}
 
-		System.out.println("Bye.");
+		System.out.println("Thanks, and hava a great one!");
 		System.exit(0);
 	}
 
 	private void displayUserMenu() {
 		System.out.println();
 		System.out.println("Menu of options:");
-		System.out.println("1. List fleet");
+		System.out.println("1. List Fleet");
 		System.out.println("2. Fly all jets");
 		System.out.println("3. View fastest jet");
 		System.out.println("4. View jet with longest range");
@@ -44,12 +45,16 @@ public class JetsApplication {
 		System.out.println("7. Add a jet to Fleet");
 		System.out.println("8. Remove a jet from Fleet");
 		System.out.println("9. Quit");
-
 	}
 
 	private boolean userInput() {
+		int choice = 0;
 		System.out.println("Please enter your choice (1-9): ");
-		int choice = scanner.nextInt();
+		try {
+			choice = scanner.nextInt();
+		} catch (InputMismatchException e) {
+			choice = 0;
+		}
 		scanner.nextLine();
 		System.out.println();
 
@@ -58,7 +63,7 @@ public class JetsApplication {
 			airField.listFleet();
 			break;
 		case 2:
-			airField.fly();
+			airField.flyJets();
 			break;
 		case 3:
 			airField.viewFastest();
@@ -67,7 +72,7 @@ public class JetsApplication {
 			airField.viewLongestRange();
 			break;
 		case 5:
-			airField.cargo();
+			airField.loadCargoJets();
 			break;
 		case 6:
 			airField.dogfight();
@@ -81,11 +86,10 @@ public class JetsApplication {
 		case 9:
 			return false;
 		default:
-			System.out.println("Invalid input. Please try again.");
+			System.err.println("Invalid input. Please try again.");
 			break;
 		}
 
 		return true;
 	}
-
 }

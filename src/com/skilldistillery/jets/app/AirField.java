@@ -18,7 +18,6 @@ public class AirField {
 			reader = new BufferedReader(new FileReader(fileName));
 			Jet j = null;
 			while ((plane = reader.readLine()) != null) {
-
 				String[] planeParts = plane.split(", ");
 				if (planeParts[0].contentEquals("Cargo Jet")) {
 					j = new CargoPlane(planeParts[0], Double.parseDouble(planeParts[1]),
@@ -32,7 +31,6 @@ public class AirField {
 							Long.parseLong(planeParts[3]));
 				}
 				jets.add(j);
-
 			}
 
 		} catch (FileNotFoundException e) {
@@ -40,14 +38,6 @@ public class AirField {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("AirField [jets=").append(jets).append("]");
-		return builder.toString();
 	}
 
 	public void listFleet() {
@@ -56,7 +46,7 @@ public class AirField {
 		}
 	}
 
-	public void fly() {
+	public void flyJets() {
 		for (Jet jet : jets) {
 			jet.fly();
 		}
@@ -92,10 +82,9 @@ public class AirField {
 				System.out.println("Longest Range: " + jet.toString());
 			}
 		}
-
 	}
 
-	public void cargo() {
+	public void loadCargoJets() {
 		int i = 1;
 		for (Jet jet : jets) {
 			if (jet instanceof CargoPlane) {
@@ -110,8 +99,8 @@ public class AirField {
 		int i = 1;
 		for (Jet jet : jets) {
 			if (jet instanceof FighterJet) {
-				((FighterJet) jet).fight();
 				System.out.println(jet.getModel() + ": " + i);
+				((FighterJet) jet).fight();
 				i++;
 			}
 		}
@@ -138,7 +127,6 @@ public class AirField {
 			input = new JetPlane(model, speed, range, price);
 		}
 		jets.add(input);
-
 	}
 
 	public void removeJet(Scanner scanner) {
@@ -148,10 +136,21 @@ public class AirField {
 			i++;
 		}
 
+		int selection = 0;
 		System.out.println("Enter number to remove: ");
-		int index = scanner.nextInt();
-		
-		jets.remove(index - 1);
+		try {
+			selection = scanner.nextInt();
+			scanner.nextLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+			selection = 0;
+		}
+
+		if (selection != 0 && selection <= jets.size()) {
+			jets.remove(selection - 1);
+		} else {
+			System.err.println("Invalid input.");
+		}
 	}
 
 }

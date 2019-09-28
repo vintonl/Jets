@@ -1,12 +1,12 @@
 package com.skilldistillery.jets.app;
 
 public abstract class Jet {
-	
+
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
-	
+
 	public Jet(String model, double speed, int range, long price) {
 		super();
 		this.model = model;
@@ -14,11 +14,12 @@ public abstract class Jet {
 		this.range = range;
 		this.price = price;
 	}
-	
+
 	public void fly() {
-		System.out.println(toString() +"Flight Time (hrs): " + flightTime(speed, range) + ".");
+		System.out.println(this.model + ": Flight Time: " + flightTime(speed, range) + "hrs at Mach: "
+				+ getSpeedInMach(speed) + ".");
 	}
-	
+
 	public double getSpeedInMach(double speed) {
 		return speed / 767.269;
 	}
@@ -54,16 +55,16 @@ public abstract class Jet {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
+
 	public double flightTime(double speed, int range) {
-		return (Math.round((range / speed)* 10.0) / 10.0);
+		return (Math.round((range / speed) * 10.0) / 10.0);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet Model: ").append(model).append(", Top Speed: ").append(speed).append("mph, range: ").append(range)
-				.append(" miles, Price: $").append(price).append(" ");
+		builder.append("Jet Model: ").append(model).append(", Top Speed: ").append(speed).append("mph, range: ")
+				.append(range).append(" miles, Price: $").append(price).append(" ");
 		return builder.toString();
 	}
 
@@ -102,6 +103,5 @@ public abstract class Jet {
 			return false;
 		return true;
 	}
-	
-	
+
 }
