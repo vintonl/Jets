@@ -89,19 +89,17 @@ public class AirField {
 		for (Jet jet : jets) {
 			if (jet instanceof CargoPlane) {
 				((CargoPlane) jet).loadCargo();
-				System.out.println(jet.getModel() + ": " + i);
+				System.out.println(i + ": " + ((CargoPlane) jet).toString());
 				i++;
 			}
 		}
 	}
 
 	public void dogfight() {
-		int i = 1;
 		for (Jet jet : jets) {
 			if (jet instanceof FighterJet) {
-				System.out.println(jet.getModel() + ": " + i);
+				System.out.println(((FighterJet) jet).toString());
 				((FighterJet) jet).fight();
-				i++;
 			}
 		}
 	}

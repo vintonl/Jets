@@ -1,5 +1,6 @@
 Cargo Jet, 300, 4000, 8000000
-Fighter Jet, 950, 1880, 15000000
-Cargo Jet, 350, 1880, 2000000
-Fighter Jet, 150, 1880, 100000
-Commercial, 1000, 1880, 2000000
+Fighter Jet, 1500, 2622, 18800000
+Cargo Jet, 350, 5880, 2000000
+Fighter Jet, 1400, 1880, 14000000
+Commercial, 400, 5240, 2000000
+Cessna 172 Skyhawk, 188, 736, 364000
