@@ -1,6 +1,5 @@
 package com.skilldistillery.jets.app;
 
-import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -30,7 +29,7 @@ public class JetsApplication {
 			start = userInput(fileName);
 		}
 
-		System.out.println("Thanks, and hava a great one!");
+		System.out.println("Thanks, and have a great one!");
 		System.exit(0);
 	}
 
@@ -86,11 +85,7 @@ public class JetsApplication {
 			airField.removeJet(scanner);
 			break;
 		case 9:
-			try {
-				airField.save(fileName);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			airField.save(fileName);
 			break;
 		case 10:
 			return false;
